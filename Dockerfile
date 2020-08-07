@@ -1,12 +1,10 @@
-FROM avastsoftware/cpanm
-
+FROM perl:5.28 AS builder
 MAINTAINER Avast Viruslab Systems
-
 COPY cpanfile cpanfile
 RUN cpanm --installdeps .
-COPY critic_html /var/lib/critic_html
-RUN ln -s /var/lib/critic_html/critichtml /usr/bin/critichtml
 
+FROM perl:5.28-slim
+COPY --from=builder /usr/local/lib/perl5 /usr/local/lib/perl5
+COPY critic /usr/bin/critic
 WORKDIR /tmp/workspace
-
-ENTRYPOINT ["critichtml"]
+ENTRYPOINT ["perl", "/usr/bin/critic"]

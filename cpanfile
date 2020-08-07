@@ -1,5 +1,2 @@
-requires 'perl', '5.010';
-
+requires 'perl', '5.28.1';
 requires 'Perl::Critic';
-requires 'Template';
-requires 'Path::Tiny';

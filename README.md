@@ -1,23 +1,34 @@
-# Docker Perl Critic
+# Perl::Critic GitHub Action
 
 ## What it does
 
-Runs Perl::Critic using Docker and outputs a HTML report.
+Runs Perl::Critic using Docker and outputs annotations.
 
-## Pre-requisites
+## Example usage
 
-- Docker
+```yaml
+on: [push]
 
-## Usage instructions
+jobs:
+  critic:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run Perl::Critic
+      uses: natanlao/docker-perl_critic@v1
+      with:
+        files: critic
+```
 
-1. Navigate to the directory containing the code you want to run perlcritic against.
-1. Next, run the following command in your terminal and perlcritic will be run against your code.
-	```
-	docker run -v $PWD:/tmp/workspace avastsoftware/perl_critic
-	```
-1. The resulting html report(s) are now accessible in `./critic_html`.
+## Options
+
+### input.files
+
+Space-separated list of files to examine. If not provided, defaults to all Perl
+files in the current directory.
 
 ## Acknowledgements
 
-perl_critic is based on
-http://blogs.lessthandot.com/index.php/webdev/perl/create-html-from-output-of/
+Forked from
+[JaSei/docker-perl\_critic](https://github.com/JaSei/docker-perl_critic).
+
