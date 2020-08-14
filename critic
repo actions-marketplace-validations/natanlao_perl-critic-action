@@ -8,10 +8,8 @@ use Perl::Critic;
 use Perl::Critic::Utils;
 use Cwd qw(abs_path cwd);
 
-my $SEVERITY = 1;
-
 # Analyse all perl files below the current directory.
-my $critic = Perl::Critic->new( '-severity' => $SEVERITY );
+my $critic = Perl::Critic->new();
 my @files  = $ARGV || Perl::Critic::Utils::all_perl_files( cwd() );
 my $vcount = 0;
 foreach my $file (@files) {

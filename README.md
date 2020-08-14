@@ -2,7 +2,8 @@
 
 ## What it does
 
-Runs Perl::Critic using Docker and outputs annotations.
+Runs Perl::Critic using Docker and outputs annotations. You can tweak what to
+criticize in your .perltidyrc.
 
 ## Example usage
 
