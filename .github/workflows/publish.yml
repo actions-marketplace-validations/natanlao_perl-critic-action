@@ -15,5 +15,5 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: docker.pkg.github.com
-          repository: natanlao/docker-perl_critic/critic
+          repository: natanlao/perl-critic-action/critic
           tag_with_ref: true

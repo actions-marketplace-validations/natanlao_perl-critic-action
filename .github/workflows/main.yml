@@ -6,6 +6,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Run Perl::Critic
-      uses: natanlao/docker-perl_critic@v1
+      uses: natanlao/perl-critic-action@v1
       with:
         files: critic
