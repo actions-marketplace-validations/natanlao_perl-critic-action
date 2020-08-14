@@ -2,6 +2,7 @@
 use strict;
 use warnings;
 use autodie;
+use version; our $VERSION = qv('1.0.0');
 
 use Perl::Critic;
 use Perl::Critic::Utils;
@@ -11,10 +12,10 @@ my $SEVERITY = 1;
 
 # Analyse all perl files below the current directory.
 my $critic = Perl::Critic->new( '-severity' => $SEVERITY );
-my @files = $ARGV || Perl::Critic::Utils::all_perl_files(cwd());
+my @files  = $ARGV || Perl::Critic::Utils::all_perl_files( cwd() );
 my $vcount = 0;
 foreach my $file (@files) {
-    foreach my $violation ($critic->critique($file)) {
+    foreach my $violation ( $critic->critique($file) ) {
         $vcount++;
         my $row = $violation->line_number();
         my $col = $violation->column_number();
@@ -23,4 +24,4 @@ foreach my $file (@files) {
     }
 }
 
-exit ($vcount > 0);
+exit( $vcount > 0 );
