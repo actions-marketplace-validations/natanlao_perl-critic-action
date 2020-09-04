@@ -6,9 +6,6 @@ inputs:
     required: false
 runs:
   using: 'docker'
-  # TODO: The image is built and published to GitHub Packages on tags, and
-  # it would be faster to use that image. Blocked on GitHub Actions requiring
-  # auth to download public images. (See also actions/starter-workflows#66)
-  image: 'Dockerfile'
+  image: 'docker://ghcr.io/natanlao/critic:1.1'
   args:
     - ${{ inputs.files }}
