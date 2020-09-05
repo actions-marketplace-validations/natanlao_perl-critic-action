@@ -1,9 +1,18 @@
-name: 'Perl::Critic'
-description: 'Run Perl::Critic against your Perl code'
+name: 'Perl Critic for Actions'
+
+description: 'Run Perl::Critic against your Perl code with code annotations'
+
+author: '@natanlao'
+
+branding:
+  icon: 'align-left'
+  color: 'yellow'
+
 inputs:
   files:
     description: 'Files to criticize'
     required: false
+
 runs:
   using: 'docker'
   image: 'docker://ghcr.io/natanlao/critic:1.1'
