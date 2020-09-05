@@ -1,5 +1,5 @@
 FROM perl:5.28 AS builder
-MAINTAINER Avast Viruslab Systems
+MAINTAINER @natanlao
 COPY cpanfile cpanfile
 RUN cpanm --installdeps .
 
