@@ -7,6 +7,10 @@ criticize in your .perltidyrc.
 
 ## Example usage
 
+### GitHub Actions
+
+In your workflow file:
+
 ```yaml
 on: [push]
 
@@ -20,6 +24,17 @@ jobs:
       with:
         files: critic
 ```
+
+### Locally
+
+If you wanted to, you could run the image that backs this Action locally:
+
+```console
+$ docker run -v $PWD:/tmp/workspace ghcr.io/natanlao/critic:latest
+```
+
+Files and directories can be specified as arguments. No arguments implies the
+current directory.
 
 ## Options
 
