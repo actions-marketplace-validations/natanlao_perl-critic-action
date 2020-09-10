@@ -5,12 +5,27 @@ use autodie;
 use version; our $VERSION = qv('1.0.0');
 
 use Perl::Critic;
-use Perl::Critic::Utils;
-use Cwd qw(abs_path cwd);
+use Cwd qw(cwd);
 
-# Analyse all perl files below the current directory.
+my @files;
+if ( scalar @ARGV > 0 ) {
+    foreach my $arg (@ARGV) {
+        if ( -d $arg ) {
+            push @files, Perl::Critic::Utils::all_perl_files( cwd() );
+        }
+        elsif ( -e $arg ) {
+            push @files, $arg;
+        }
+        else {
+            print "::warning file=$arg,line=0,col=0::File not found\n";
+        }
+    }
+}
+else {
+    @files = Perl::Critic::Utils::all_perl_files( cwd() );
+}
+
 my $critic = Perl::Critic->new();
-my @files  = $ARGV || Perl::Critic::Utils::all_perl_files( cwd() );
 my $vcount = 0;
 foreach my $file (@files) {
     foreach my $violation ( $critic->critique($file) ) {
